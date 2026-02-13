@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Aurelia Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assests/Css/stylesheet.css">
+</head>
+<body class="bg-slate-900 text-gray-200 flex flex-col min-h-screen">
+    <div id="header"></div>
+
+    <main class="flex-grow">
+        <section class="py-20 md:py-24 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800">
+            <div class="container mx-auto px-6">
+                <p class="text-[#FDEEBE] tracking-widest text-sm mb-3">INSIGHTS</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-white max-w-4xl">Design, BIM and Construction Knowledge Hub</h1>
+                <p class="text-gray-300 mt-5 max-w-3xl">Read practical insights from our team on architecture workflows, BIM coordination, MEP planning, and project delivery best practices.</p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-20 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800 hover:border-[#d4af37] transition">
+                        <img src="images/bim.png" alt="BIM Coordination Guide" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <p class="text-xs text-[#d4af37] uppercase tracking-wide">BIM</p>
+                            <h2 class="text-xl font-bold text-white mt-2">How BIM Coordination Reduces Site Rework</h2>
+                            <p class="text-gray-400 mt-3">A practical breakdown of clash detection, model federation, and issue tracking before construction.</p>
+                        </div>
+                    </article>
+
+                    <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800 hover:border-[#d4af37] transition">
+                        <img src="images/interiornew.png" alt="Interior Design Trends" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <p class="text-xs text-[#d4af37] uppercase tracking-wide">Interior</p>
+                            <h2 class="text-xl font-bold text-white mt-2">Interior Layout Strategies for Modern Workspaces</h2>
+                            <p class="text-gray-400 mt-3">Planning open, collaborative offices while preserving acoustics, privacy, and visual identity.</p>
+                        </div>
+                    </article>
+
+                    <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800 hover:border-[#d4af37] transition">
+                        <img src="images/architectural.jpg.webp" alt="Architecture Planning" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <p class="text-xs text-[#d4af37] uppercase tracking-wide">Architecture</p>
+                            <h2 class="text-xl font-bold text-white mt-2">Early Design Decisions That Save Project Costs</h2>
+                            <p class="text-gray-400 mt-3">Five decisions in schematic stage that directly improve construction efficiency and lifecycle cost.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="Assests/js/Reuse,js"></script>
+</body>
+</html>
