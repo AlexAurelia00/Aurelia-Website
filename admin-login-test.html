@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login Test | Aurelia Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 text-gray-200 p-6">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-white mb-2">🔐 Admin Login Debugger</h1>
+            <p class="text-gray-400">Test and troubleshoot your admin panel login</p>
+        </div>
+
+        <!-- Test 1: Browser Environment -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">🌐 Browser Environment</h2>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">JavaScript Enabled:</span>
+                    <span id="jsEnabled" class="text-green-400 font-mono">✓ Yes</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">localStorage Available:</span>
+                    <span id="storageAvailable" class="text-green-400 font-mono">✓ Yes</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Current URL:</span>
+                    <span id="currentUrl" class="text-blue-400 font-mono text-xs break-all"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">User Agent:</span>
+                    <span id="userAgent" class="text-blue-400 font-mono text-xs break-all"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test 2: Admin Panel File -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">📄 Admin Panel Check</h2>
+            <button onclick="checkAdminFile()" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-semibold transition">
+                Check admin.html Exists
+            </button>
+            <div id="adminFileResult" class="mt-3 text-sm text-gray-400"></div>
+        </section>
+
+        <!-- Test 3: localStorage Test -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">💾 localStorage Test</h2>
+            <div class="space-y-3">
+                <button onclick="testStorageWrite()" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold transition">
+                    Test Write Data
+                </button>
+                <button onclick="testStorageRead()" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold transition">
+                    Read Stored Data
+                </button>
+                <button onclick="testStorageClear()" class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-semibold transition">
+                    Clear All Data
+                </button>
+                <div id="storageResult" class="mt-3 p-3 rounded bg-slate-900 text-sm text-yellow-400 font-mono hidden">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Test 4: Login Form Test -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">🔑 Login Form Test</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">Email</label>
+                    <input type="email" id="testEmail" value="admin@aureliadesign.com" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">Password</label>
+                    <input type="password" id="testPassword" value="admin123" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white">
+                </div>
+                <button onclick="testLogin()" class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded font-semibold transition">
+                    Test Login
+                </button>
+                <div id="loginTestResult" class="mt-3 p-3 rounded bg-slate-900 text-sm font-mono hidden">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Test 5: Console Simulation -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">📋 Console Log (Last 10 messages)</h2>
+            <div id="consoleLogs" class="bg-slate-900 rounded p-4 font-mono text-xs space-y-1 max-h-64 overflow-y-auto">
+                <div class="text-gray-500">Waiting for logs...</div>
+            </div>
+        </section>
+
+        <!-- Test 6: Quick Links -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-white mb-4">🔗 Quick Links</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="admin.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-center font-semibold transition">
+                    → Go to Admin Panel
+                </a>
+                <a href="javascript:void(window.open('admin.html', '_blank'))" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-center font-semibold transition">
+                    → Open in New Tab
+                </a>
+                <a href="ADMIN_LOGIN_TROUBLESHOOTING.md" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-center font-semibold transition">
+                    📖 Troubleshooting Guide
+                </a>
+                <button onclick="location.reload()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded font-semibold transition">
+                    🔄 Refresh Page
+                </button>
+            </div>
+        </section>
+
+        <!-- Instructions -->
+        <section class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-white mb-4">📝 How to Use This Tester</h2>
+            <ol class="space-y-3 text-sm text-gray-300">
+                <li class="flex space-x-3">
+                    <span class="text-yellow-400 font-bold flex-shrink-0">1.</span>
+                    <span>Check your <strong>Browser Environment</strong> - Ensure JS is enabled</span>
+                </li>
+                <li class="flex space-x-3">
+                    <span class="text-yellow-400 font-bold flex-shrink-0">2.</span>
+                    <span>Test <strong>localStorage</strong> - Write, read, and clear data</span>
+                </li>
+                <li class="flex space-x-3">
+                    <span class="text-yellow-400 font-bold flex-shrink-0">3.</span>
+                    <span>Test the <strong>Login Form</strong> - With correct credentials provided</span>
+                </li>
+                <li class="flex space-x-3">
+                    <span class="text-yellow-400 font-bold flex-shrink-0">4.</span>
+                    <span>Check the <strong>Console Logs</strong> - They'll show what went wrong</span>
+                </li>
+                <li class="flex space-x-3">
+                    <span class="text-yellow-400 font-bold flex-shrink-0">5.</span>
+                    <span>Open your browser <strong>Developer Tools (F12)</strong> to see more details</span>
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <script>
+        // Capture console logs
+        const consoleLogs = [];
+        const originalLog = console.log;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const msg = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
+            consoleLogs.push(msg);
+            
+            if (consoleLogs.length > 10) consoleLogs.shift();
+            updateConsoleLogs();
+        };
+
+        function updateConsoleLogs() {
+            const logsDiv = document.getElementById('consoleLogs');
+            if (consoleLogs.length === 0) {
+                logsDiv.innerHTML = '<div class="text-gray-500">Waiting for logs...</div>';
+            } else {
+                logsDiv.innerHTML = consoleLogs.map(log => 
+                    `<div class="text-blue-300">> ${log}</div>`
+                ).join('');
+                logsDiv.scrollTop = logsDiv.scrollHeight;
+            }
+        }
+
+        // Init page
+        function initializePage() {
+            // JS enabled
+            document.getElementById('jsEnabled').textContent = '✓ Yes';
+            
+            // localStorage available
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                document.getElementById('storageAvailable').textContent = '✓ Yes';
+            } catch (e) {
+                document.getElementById('storageAvailable').textContent = '✗ No (Check privacy settings)';
+                document.getElementById('storageAvailable').className = 'text-red-400 font-mono';
+            }
+            
+            // Current URL
+            document.getElementById('currentUrl').textContent = location.href;
+            
+            // User Agent
+            document.getElementById('userAgent').textContent = navigator.userAgent;
+        }
+
+        // Test functions
+        function showResult(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = `mt-3 p-3 rounded bg-slate-900 text-sm font-mono ${!isError ? 'text-green-400' : 'text-red-400'}`;
+        }
+
+        function checkAdminFile() {
+            fetch('admin.html', { method: 'HEAD' })
+                .then(r => {
+                    if (r.ok) {
+                        showResult('adminFileResult', '✓ admin.html found (200 OK)');
+                    } else {
+                        showResult('adminFileResult', `✗ admin.html returned: ${r.status}`, true);
+                    }
+                })
+                .catch(e => showResult('adminFileResult', `✗ Error: ${e.message}`, true));
+        }
+
+        function testStorageWrite() {
+            try {
+                const testData = {
+                    adminToken: 'test_token_' + Date.now(),
+                    adminEmail: 'admin@aureliadesign.com',
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem('adminToken', testData.adminToken);
+                localStorage.setItem('adminEmail', testData.adminEmail);
+                
+                showResult('storageResult', `✓ Data written successfully\nToken: ${testData.adminToken}\nEmail: ${testData.adminEmail}`);
+            } catch (e) {
+                showResult('storageResult', `✗ Error writing: ${e.message}`, true);
+            }
+        }
+
+        function testStorageRead() {
+            try {
+                const token = localStorage.getItem('adminToken');
+                const email = localStorage.getItem('adminEmail');
+                
+                if (token && email) {
+                    showResult('storageResult', `✓ Data read successfully\nToken: ${token}\nEmail: ${email}`);
+                } else {
+                    showResult('storageResult', `⚠ localStorage empty\nToken: ${token}\nEmail: ${email}`, true);
+                }
+            } catch (e) {
+                showResult('storageResult', `✗ Error reading: ${e.message}`, true);
+            }
+        }
+
+        function testStorageClear() {
+            try {
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminEmail');
+                showResult('storageResult', '✓ All admin data cleared from localStorage');
+            } catch (e) {
+                showResult('storageResult', `✗ Error clearing: ${e.message}`, true);
+            }
+        }
+
+        function testLogin() {
+            const email = document.getElementById('testEmail').value;
+            const password = document.getElementById('testPassword').value;
+            
+            console.log(`Testing login with: ${email} / ${password}`);
+            
+            if (!email || !password) {
+                showResult('loginTestResult', '✗ Please enter email and password', true);
+                return;
+            }
+
+            if (email === 'admin@aureliadesign.com' && password === 'admin123') {
+                localStorage.setItem('adminToken', 'demo_token_' + Date.now());
+                localStorage.setItem('adminEmail', email);
+                console.log('✓ Login successful!');
+                showResult('loginTestResult', `✓ Login credentials correct!\nToken saved to localStorage\nYou can now access the admin panel`);
+            } else {
+                console.log('✗ Invalid credentials');
+                showResult('loginTestResult', `✗ Invalid credentials\nExpected:\n  admin@aureliadesign.com\n  admin123\nGot:\n  ${email}\n  ${password}`, true);
+            }
+        }
+
+        // Initialize
+        initializePage();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup Checklist | Aurelia Design - Supabase Integration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 text-gray-200 p-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-5xl font-bold text-white mb-4">
+                Supabase Integration Setup <span class="text-[#d4af37]">Checklist</span>
+            </h1>
+            <p class="text-gray-400 text-lg">Track your setup progress for client management system</p>
+        </div>
+
+        <!-- Setup Progress -->
+        <div class="grid grid-cols-4 gap-4 mb-12">
+            <div class="bg-slate-800 border-2 border-slate-700 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-[#d4af37] mb-2" id="progressPercent">0%</div>
+                <p class="text-gray-400 text-sm">Progress</p>
+            </div>
+            <div class="bg-slate-800 border-2 border-green-600/30 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-green-400 mb-2" id="completedCount">0</div>
+                <p class="text-gray-400 text-sm">Completed</p>
+            </div>
+            <div class="bg-slate-800 border-2 border-yellow-600/30 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-yellow-400 mb-2" id="pendingCount">12</div>
+                <p class="text-gray-400 text-sm">Pending</p>
+            </div>
+            <div class="bg-slate-800 border-2 border-blue-600/30 rounded-lg p-6 text-center">
+                <div class="text-3xl font-bold text-blue-400 mb-2" id="totalCount">12</div>
+                <p class="text-gray-400 text-sm">Total Tasks</p>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="space-y-6">
+            <!-- Phase 1: Setup -->
+            <section class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+                <div class="bg-slate-900 px-6 py-4 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-white">
+                        🔧 Phase 1: Setup (4 Steps)
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <!-- Task 1 -->
+                    <div class="task-item flex items-start space-x-4" data-task="1">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">1. Create Database Table</h3>
+                            <p class="text-gray-400 text-sm mb-3">Run SQL query in Supabase to create client_inquiries table</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Steps:</p>
+                                <ul class="text-xs text-gray-400 space-y-1 ml-4">
+                                    <li>• Open https://app.supabase.com</li>
+                                    <li>• Go to SQL Editor</li>
+                                    <li>• Copy SQL from SUPABASE_SETUP.md (lines 14-45)</li>
+                                    <li>• Click Run</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 2 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="2">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">2. Test Contact Form</h3>
+                            <p class="text-gray-400 text-sm mb-3">Verify contact form saves data to Supabase</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Steps:</p>
+                                <ul class="text-xs text-gray-400 space-y-1 ml-4">
+                                    <li>• Open /contact.html</li>
+                                    <li>• Fill out form with test data</li>
+                                    <li>• Click "Send Inquiry"</li>
+                                    <li>• Should see success message</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 3 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="3">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">3. Access Admin Dashboard</h3>
+                            <p class="text-gray-400 text-sm mb-3">Login to admin panel and verify test submission appears</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Credentials:</p>
+                                <div class="bg-slate-900 p-3 rounded text-xs text-gray-300 font-mono">
+                                    Email: admin@aureliadesign.com<br>
+                                    Password: admin123
+                                </div>
+                                <p class="text-xs text-yellow-400 mt-2">⚠️ Change these before going live!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 4 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="4">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">4. Update Admin Credentials</h3>
+                            <p class="text-gray-400 text-sm mb-3">Change admin password for security (REQUIRED for production)</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Steps:</p>
+                                <ul class="text-xs text-gray-400 space-y-1 ml-4">
+                                    <li>• Open admin.html in code editor</li>
+                                    <li>• Find line ~200 (admin@aureliadesign.com)</li>
+                                    <li>• Change email and password</li>
+                                    <li>• Save file</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 2: Testing -->
+            <section class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+                <div class="bg-slate-900 px-6 py-4 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-white">
+                        🧪 Phase 2: Testing (4 Steps)
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <!-- Task 5 -->
+                    <div class="task-item flex items-start space-x-4" data-task="5">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">5. Test on Mobile Devices</h3>
+                            <p class="text-gray-400 text-sm mb-3">Verify forms work on smartphones and tablets</p>
+                            <div class="text-xs text-gray-400">
+                                Test on: iPhone, Android, iPad, and tablets
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 6 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="6">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">6. Test Multiple Browsers</h3>
+                            <p class="text-gray-400 text-sm mb-3">Verify compatibility across different browsers</p>
+                            <div class="text-xs text-gray-400">
+                                Test on: Chrome, Firefox, Safari, Edge
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 7 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="7">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">7. Test Error Handling</h3>
+                            <p class="text-gray-400 text-sm mb-3">Verify error messages appear for invalid inputs</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Test:</p>
+                                <ul class="text-xs text-gray-400 space-y-1 ml-4">
+                                    <li>• Empty form submission</li>
+                                    <li>• Invalid email format</li>
+                                    <li>• Check console for errors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 8 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="8">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">8. Verify Database Entries</h3>
+                            <p class="text-gray-400 text-sm mb-3">Check that all form submissions are saved correctly</p>
+                            <div class="text-xs text-gray-400">
+                                Check via admin panel and Supabase dashboard
+                            </div>
+                        </div>
+                    </section>
+
+            <!-- Phase 3: Optimization -->
+            <section class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+                <div class="bg-slate-900 px-6 py-4 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-white">
+                        ⚡ Phase 3: Optimization (4 Steps)
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <!-- Task 9 -->
+                    <div class="task-item flex items-start space-x-4" data-task="9">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">9. Set Up Email Notifications (Optional)</h3>
+                            <p class="text-gray-400 text-sm mb-3">Configure Supabase to send emails on new inquiry</p>
+                            <div class="text-xs text-gray-400">
+                                Resource: Check Supabase docs for email setup
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 10 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="10">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">10. Add Custom Fields (Optional)</h3>
+                            <p class="text-gray-400 text-sm mb-3">Extend form with additional fields if needed</p>
+                            <div class="text-xs text-gray-400">
+                                Examples: Budget, Timeline, Attachments
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 11 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="11">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">11. Set Up Automated Backups</h3>
+                            <p class="text-gray-400 text-sm mb-3">Configure Supabase to backup data daily</p>
+                            <div class="text-xs text-gray-400">
+                                Go to Settings > Backups in Supabase dashboard
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 12 -->
+                    <div class="task-item flex items-start space-x-4 border-t border-slate-700 pt-4" data-task="12">
+                        <input type="checkbox" class="mt-1 w-5 h-5 cursor-pointer" onchange="updateProgress()">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-2">12. Security Audit</h3>
+                            <p class="text-gray-400 text-sm mb-3">Final security check before production</p>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500">Verify:</p>
+                                <ul class="text-xs text-gray-400 space-y-1 ml-4">
+                                    <li>• Admin password is strong (20+ chars)</li>
+                                    <li>• RLS policies are configured</li>
+                                    <li>• API key not exposed in code</li>
+                                    <li>• HTTPS enabled on your domain</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Resources -->
+        <div class="mt-12 bg-slate-800 border border-slate-700 rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-white mb-4">📚 Documentation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="QUICK_START.md" class="block bg-slate-900 hover:bg-slate-700 transition rounded p-4">
+                    <p class="font-semibold text-white mb-1">Quick Start Guide</p>
+                    <p class="text-gray-400 text-sm">4-step setup instructions</p>
+                </a>
+                <a href="SUPABASE_SETUP.md" class="block bg-slate-900 hover:bg-slate-700 transition rounded p-4">
+                    <p class="font-semibold text-white mb-1">Database Setup</p>
+                    <p class="text-gray-400 text-sm">SQL queries and Supabase configuration</p>
+                </a>
+                <a href="README_SUPABASE.md" class="block bg-slate-900 hover:bg-slate-700 transition rounded p-4">
+                    <p class="font-semibold text-white mb-1">Quick Reference</p>
+                    <p class="text-gray-400 text-sm">Admin panel features and customization</p>
+                </a>
+                <a href="ARCHITECTURE.md" class="block bg-slate-900 hover:bg-slate-700 transition rounded p-4">
+                    <p class="font-semibold text-white mb-1">Architecture</p>
+                    <p class="text-gray-400 text-sm">System design and data flow</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-gray-500 text-sm">
+            <p>Supabase Integration Setup • Version 1.0 • March 26, 2026</p>
+            <p class="mt-2">✨ Your Aurelia Design website is ready for client management!</p>
+        </div>
+    </div>
+
+    <script>
+        // Update progress
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+            const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            const percentage = Math.round((completed / total) * 100);
+
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('pendingCount').textContent = total - completed;
+            document.getElementById('totalCount').textContent = total;
+
+            // Save to localStorage
+            localStorage.setItem('setupProgress', JSON.stringify({
+                completed,
+                total,
+                timestamp: new Date().toISOString()
+            }));
+        }
+
+        // Load saved progress
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('setupProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                console.log('Setup Progress Saved:', data);
+            }
+            updateProgress();
+        });
+
+        // Mark items as completed on click (visual feedback)
+        document.querySelectorAll('.task-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                this.closest('.task-item').style.opacity = this.checked ? '0.6' : '1';
+            });
+        });
+    </script>
+</body>
+
+</html>

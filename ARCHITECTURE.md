@@ -1,0 +1,395 @@
+# Supabase Integration Architecture
+
+## System Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                          AURELIA DESIGN WEBSITE                 │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                     FRONTEND LAYER (HTML/CSS/JS)                │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│  │  Contact Page    │  │  Admin Dashboard │  │   Other Pages    │
+│  │  (contact.html)  │  │   (admin.html)   │  │   (index, etc)   │
+│  └────────┬─────────┘  └────────┬─────────┘  └──────────────────┘
+│           │                     │
+│           │                     │
+│           └──────────┬──────────┘
+│                      │
+│           ┌──────────▼──────────┐
+│           │ Supabase JS Library │
+│           │   (CDN Loaded)      │
+│           └──────────┬──────────┘
+│                      │
+└──────────────────────┼─────────────────────────────────────────┘
+                       │
+                       │ HTTP/HTTPS
+                       │
+┌──────────────────────▼─────────────────────────────────────────┐
+│                   SUPABASE BACKEND                              │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │          PostgreSQL Database                             │   │
+│  │  ┌─────────────────────────────────────────────────────┐ │   │
+│  │  │  TABLE: client_inquiries                            │ │   │
+│  │  │  ┌────────, ─────────────, ────────────────────┐   │ │   │
+│  │  │  │ id (UUID)                                   │   │ │   │
+│  │  │  │ full_name (text)                            │   │ │   │
+│  │  │  │ email (text)                                │   │ │   │
+│  │  │  │ phone (text)                                │   │ │   │
+│  │  │  │ service_needed (text)                       │   │ │   │
+│  │  │  │ project_details (text)                      │   │ │   │
+│  │  │  │ submitted_at (timestamp)                    │   │ │   │
+│  │  │  │ status (text: new|in_progress|completed)   │   │ │   │
+│  │  │  └────────────────────────────────────────────┘   │ │   │
+│  │  └─────────────────────────────────────────────────────┘ │   │
+│  │                                                            │   │
+│  │  ┌──────────────────────────────────────────────────────┐ │   │
+│  │  │  Row Level Security (RLS) Policies                  │ │   │
+│  │  │  - Public users can INSERT                          │ │   │
+│  │  │  - Anyone can SELECT                                │ │   │
+│  │  │  - Updates/Deletes allowed                          │ │   │
+│  │  └──────────────────────────────────────────────────────┘ │   │
+│  │                                                            │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │          REST API Endpoints                              │   │
+│  │  (Auto-generated by Supabase)                            │   │
+│  │                                                           │   │
+│  │  GET /rest/v1/client_inquiries                           │   │
+│  │  POST /rest/v1/client_inquiries                          │   │
+│  │  PATCH /rest/v1/client_inquiries                         │   │
+│  │  DELETE /rest/v1/client_inquiries                        │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Data Flow
+
+### 1. User Submits Contact Form
+
+```
+User fills form
+    │
+    ▼
+Form validation
+    │
+    ▼
+JavaScript collects data
+    │
+    ▼
+supabase-init.js processes
+    │
+    ▼
+Sends to Supabase API
+    │
+    ▼
+Database stores record
+    │
+    ▼
+Returns success/error
+    │
+    ▼
+Show user confirmation
+```
+
+### 2. Admin Views Inquiries
+
+```
+Manager visits admin.html
+    │
+    ▼
+Login screen
+    │
+    ▼
+Enter credentials
+    │
+    ▼
+Fetch data from Supabase
+    │
+    ▼
+Display in dashboard
+    │
+    ▼
+Can filter, search, update status
+```
+
+---
+
+## File Structure
+
+```
+Alexdesigner-main/
+├── index.html              ← Home page
+├── contact.html            ← UPDATED: Contact form with Supabase
+├── admin.html              ← NEW: Admin dashboard
+├── about.html
+├── services.html
+├── projects.html
+├── blog.html
+├── bim.html
+├── careers.html
+├──
+├── Assests/
+│   ├── Css/
+│   │   └── stylesheet.css
+│   └── js/
+│       ├── Reuse.js                    ← Menu/Footer loader
+│       └── supabase-init.js            ← NEW: Supabase config
+│
+├── FilesReuse/
+│   ├── header.html
+│   ├── footer.html
+│   └── head.html
+│
+├── images/                 ← Images folder
+├── Ourclients/             ← Client logos
+│
+├── Documentation/
+│   ├── SUPABASE_SETUP.md            ← Setup instructions
+│   ├── README_SUPABASE.md           ← Quick reference
+│   ├── VERIFY_SETUP.sh              ← Verification script
+│   └── ARCHITECTURE.md              ← This file
+└── .git/                   ← Git repository
+```
+
+---
+
+## Technologies Used
+
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| Supabase | Database & Backend | Latest |
+| PostgreSQL | Data Storage | 15+ |
+| HTML5 | Structure | Latest |
+| CSS3 + Tailwind | Styling | 3.x |
+| JavaScript ES6+ | Logic & Interactivity | Latest |
+| Supabase JS SDK | Database Client | v2 |
+
+---
+
+## Security Architecture
+
+### Authentication Flow
+
+```
+┌─────────────────┐
+│  Admin Panel    │
+└────────┬────────┘
+         │
+         ▼
+    ┌────────────┐
+    │   Login    │
+    │ (email+pwd)│
+    └────┬───────┘
+         │
+         ▼
+  ┌─────────────────┐
+  │  localStorage   │
+  │ (admin token)   │
+  └────┬────────────┘
+         │
+         ▼
+    Dashboard Loaded
+    └──► Can now query database
+    └──► RLS policies check
+    └──► Only fetch allowed data
+```
+
+### Row Level Security (RLS)
+
+```
+INSERT: Public can submit forms ✅
+SELECT: Anyone can read ✅
+UPDATE: Authorized users ✅
+DELETE: Authorized users ✅
+```
+
+---
+
+## API Integration
+
+### Contact Form Submission
+
+```javascript
+// POST Request to Supabase
+{
+  method: 'POST',
+  endpoint: '/rest/v1/client_inquiries',
+  data: {
+    full_name: "John Doe",
+    email: "john@example.com",
+    phone: "+91 98765 43210",
+    service_needed: "Architectural Design",
+    project_details: "...",
+    submitted_at: "2024-03-26T10:30:00Z",
+    status: "new"
+  }
+}
+
+Response: { id: "uuid", ... }
+```
+
+### Admin Panel Query
+
+```javascript
+// GET Request to Supabase
+{
+  method: 'GET',
+  endpoint: '/rest/v1/client_inquiries',
+  query: {
+    order: 'submitted_at.desc',
+    status: 'eq.new'
+  }
+}
+
+Response: [{ id, full_name, email, ... }]
+```
+
+---
+
+## Performance Considerations
+
+### Optimizations
+
+1. **Database Indexes**
+   - Index on `status` for fast filtering
+   - Index on `submitted_at` for sorting
+   - Index on `email` for searching
+
+2. **Lazy Loading**
+   - Supabase JS loaded from CDN
+   - Only loaded on contact.html and admin.html
+
+3. **Caching**
+   - Admin panel caches data in memory
+   - Filter operations are client-side (fast)
+
+---
+
+## Scalability
+
+### Current Capacity
+
+- **Supabase Free Tier**
+  - Unlimited API calls
+  - 500 MB database
+  - Perfect for testing
+
+### Upgrade Path
+
+```
+Free Tier (current)
+    │
+    ├─ Good for: Testing, Development
+    │
+    ▼
+Pro Tier ($25/month)
+    │
+    ├─ Good for: Small business, 100k+ monthly users
+    │
+    ▼
+Enterprise
+    │
+    └─ Good for: Large scale
+```
+
+---
+
+## Monitoring & Logs
+
+### View Submissions
+
+1. **Supabase Dashboard**
+   - https://app.supabase.com
+   - Select your project
+   - Go to "Table Editor"
+   - View `client_inquiries` table
+
+2. **Admin Panel**
+   - https://yoursite.com/admin.html
+   - Login with credentials
+   - See real-time stats
+
+3. **Database Logs**
+   - Supabase > Logs
+   - Monitor API calls
+   - Track errors
+
+---
+
+## Production Checklist
+
+- [ ] Create database table (run SQL)
+- [ ] Test contact form submission
+- [ ] Test admin panel login
+- [ ] Change admin credentials
+- [ ] Set up email notifications
+- [ ] Configure CORS if needed
+- [ ] Set up automated backups
+- [ ] Enable API rate limiting
+- [ ] Update RLS policies for production
+- [ ] Test on mobile devices
+- [ ] Performance testing
+- [ ] Security audit
+
+---
+
+## Troubleshooting Guide
+
+### Issue: Form doesn't submit
+
+**Possible Causes:**
+- Table not created
+- Wrong table name
+- RLS policy blocking inserts
+
+**Solution:**
+1. Check Supabase dashboard
+2. Verify table exists: `client_inquiries`
+3. Check browser console (F12) for errors
+4. Verify RLS allows inserts
+
+### Issue: Admin panel shows no data
+
+**Possible Causes:**
+- Not logged in
+- Wrong credentials
+- No data in database
+- RLS policy blocking selects
+
+**Solution:**
+1. Clear browser cache
+2. Verify login credentials
+3. Check browser console
+4. Test API directly
+
+### Issue: Supabase responds with 429 (Too Many Requests)
+
+**Solution:**
+- Implement rate limiting
+- Contact Supabase support
+- Upgrade to paid tier
+
+---
+
+## Next Steps
+
+1. ✅ Files created and configured
+2. ⏭️ Create database table (see SUPABASE_SETUP.md)
+3. ⏭️ Test on staging environment
+4. ⏭️ Make necessary customizations
+5. ⏭️ Deploy to production
+
+---
+
+Generated: March 26, 2026
+Version: 1.0

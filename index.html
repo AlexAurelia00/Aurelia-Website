@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head >
-     <script src="https://cdn.tailwindcss.com"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurelia Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +28,7 @@
                         <p class="text-lg font-light text-[#FDEEBE]">SMART SOLUTIONS FOR A DYNAMIC WORLD</p>
                         <h1 class="text-4xl md:text-6xl font-bold my-4 leading-tight">DELIVERING AN INNOVATIVE DESIGN THAT WORKS TODAY AND SHAPES TOMORROW</h1>
                         <!-- <p class="text-lg md:text-xl mb-8">We combine our expertise in engineering, planning, and design with intelligent, future-ready solutions that bring your project to life with stunning detail.</p> -->
-                        <a href="#" class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#a27b02] text-white px-8 py-3 rounded-full hover:brightness-125 transition-all duration-300 font-bold">Learn More</a>
+                        <a href="about.html" class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#a27b02] text-white px-8 py-3 rounded-full hover:brightness-125 transition-all duration-300 font-bold">Learn More</a>
                     </div>
                 </div>
             </section>
@@ -83,15 +86,15 @@
                 <div class="container mx-auto px-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="250">0</h3>
+                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="250">147</h3>
                             <p class="text-[#d4af37] font-semibold">PROJECTS COMPLETED</p>
                         </div>
                         <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="100">0</h3>
+                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="100">4.8/5</h3>
                             <p class="text-[#d4af37] font-semibold">CLIENT SATISFACTION %</p>
                         </div>
                         <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="85">0</h3>
+                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="85">25</h3>
                             <p class="text-[#d4af37] font-semibold">EXPERT ARCHITECTS & DESIGNERS</p>
                         </div>
                     </div>
@@ -102,7 +105,7 @@
             <section class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#FCEEBE] text-slate-900">
                 <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
                     <h2 class="text-3xl font-bold text-center md:text-left mb-4 md:mb-0">SMART BIM AND MEP SERVICES FOR GLOBAL PROJECTS</h2>
-                    <a href="#" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-black transition duration-300 font-bold">Get In Touch</a>
+                    <a href="contact.html" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-black transition duration-300 font-bold">Get In Touch</a>
                 </div>
             </section>
 
@@ -114,25 +117,25 @@
     <div class="relative rounded-lg overflow-hidden shadow-lg group">
         <img src="images/architectural.jpg.webp" class="w-full h-64 object-cover" alt="Architectural Services">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <h3 class="text-white text-2xl font-bold">Architectural Services</h3>
+            <a href="services.html" class="text-white text-2xl font-bold">Architectural Services</a>
         </div>
     </div>
     <div class="relative rounded-lg overflow-hidden shadow-lg group">
-        <img src="images/Mainbanner.jpg" class="w-full h-64 object-cover" alt="Interior Design">
+        <img src="images/mainbanner.jpg" class="w-full h-64 object-cover" alt="Interior Design">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <h3 class="text-white text-2xl font-bold">Interior Design</h3>
+            <a href="services.html" class="text-white text-2xl font-bold">Interior Design</a>
         </div>
     </div>
     <div class="relative rounded-lg overflow-hidden shadow-lg group">
         <img src="images/interior.jpg" class="w-full h-64 object-cover" alt="MEP Services">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <h3 class="text-white text-2xl font-bold">MEP Services</h3>
+            <a href="bim.html" class="text-white text-2xl font-bold">MEP Services</a>
         </div>
     </div>
     <div class="relative rounded-lg overflow-hidden shadow-lg group">
         <img src="images/interior.jpg" class="w-full h-64 object-cover" alt="Project Management">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <h3 class="text-white text-2xl font-bold">Project Management</h3>
+            <a href="projects.html" class="text-white text-2xl font-bold">Project Management</a>
         </div>
     </div>
 </div>
@@ -188,85 +191,12 @@
             </section>
         </div>
 
-        <!-- ABOUT US PAGE CONTENT -->
-        <div id="page-about" class="hidden">
-            <!-- About Hero Section -->
-            <section class="bg-gray-950 py-20 md:py-32">
-                <div class="container mx-auto px-6 text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white">About <span class="text-[#d4af37]">Aurelia Design</span></h1>
-                    <p class="text-lg md:text-xl mt-4 text-gray-300 max-w-3xl mx-auto">Pioneering the future of design and engineering with creativity, precision, and passion.</p>
-                </div>
-            </section>
-
-            <!-- Our Story Section -->
-            <section class="py-20 bg-slate-900">
-                <div class="container mx-auto px-6">
-                    <div class="flex flex-wrap items-center -mx-4">
-                        <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-                            <img src="https://placehold.co/600x400/1e293b/d4af37?text=Our+Team" alt="Our Team" class="rounded-lg shadow-xl w-full">
-                        </div>
-                        <div class="w-full lg:w-1/2 px-4">
-                            <h2 class="text-3xl font-bold mb-4 text-[#d4af37]">Our Story</h2>
-                            <p class="text-gray-400 mb-4">Founded on the principles of innovation and excellence, Aurelia Design began its journey to redefine architectural and engineering solutions. Our mission is to blend cutting-edge technology with timeless design to create spaces that are not only functional and sustainable but also inspiring.</p>
-                            <p class="text-gray-400">From a small team of passionate designers in Kerala, India, we have grown into a global firm serving a diverse clientele across continents. Our commitment to quality and client satisfaction remains the cornerstone of our success.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Meet the Team Section -->
-            <section class="py-20 bg-slate-800">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 text-white">Meet Our Team</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Team Member -->
-                        <div class="text-center">
-                            <img src="https://placehold.co/300x300/1e293b/ffffff?text=Person+1" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-[#d4af37]" alt="Team Member 1">
-                            <h3 class="text-xl font-bold text-white">Alex Johnson</h3>
-                            <p class="text-[#d4af37]">Lead Architect</p>
-                        </div>
-                        <!-- Team Member -->
-                        <div class="text-center">
-                            <img src="https://placehold.co/300x300/1e293b/ffffff?text=Person+2" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-[#d4af37]" alt="Team Member 2">
-                            <h3 class="text-xl font-bold text-white">Maria Garcia</h3>
-                            <p class="text-[#d4af37]">Head of Interior Design</p>
-                        </div>
-                        <!-- Team Member -->
-                        <div class="text-center">
-                            <img src="https://placehold.co/300x300/1e293b/ffffff?text=Person+3" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-[#d4af37]" alt="Team Member 3">
-                            <h3 class="text-xl font-bold text-white">David Chen</h3>
-                            <p class="text-[#d4af37]">MEP Director</p>
-                        </div>
-                        <!-- Team Member -->
-                        <div class="text-center">
-                            <img src="https://placehold.co/300x300/1e293b/ffffff?text=Person+4" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-[#d4af37]" alt="Team Member 4">
-                            <h3 class="text-xl font-bold text-white">Sarah Miller</h3>
-                            <p class="text-[#d4af37]">Project Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        
-        <!-- SERVICES PAGE (Placeholder) -->
-        <div id="page-services" class="hidden">
-            <section class="py-20">
-                <div class="container mx-auto px-6 text-center">
-                    <h1 class="text-5xl font-bold text-white">Our Services</h1>
-                    <p class="text-xl mt-4 text-gray-400">This page is under construction. Please check back later!</p>
-                </div>
-            </section>
-        </div>
-
-
     </main>
     
     <div id="footer"></div>
 
-    <script src="Assests/js/Reuse,js"></script>
+    <script src="Assests/js/Reuse.js"></script>
 
    
 </body>
 </html>
-
-

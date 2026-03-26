@@ -1,28 +1,31 @@
-// Load Head
-fetch("FilesReuse/head.html")
-    .then(res => res.text())
-    .then(data => {
-        document.getElementById("head").innerHTML = data;
-    });
-
 // Load Header
 fetch("FilesReuse/header.html")
     .then(res => res.text())
     .then(data => {
-        document.getElementById("header").innerHTML = data;
+        const header = document.getElementById("header");
+        if (!header) return;
+
+        header.innerHTML = data;
     });
 
 // Load Footer
 fetch("FilesReuse/footer.html")
     .then(res => res.text())
     .then(data => {
-        document.getElementById("footer").innerHTML = data;
+        const footer = document.getElementById("footer");
+        if (!footer) return;
+
+        footer.innerHTML = data;
     });
 
 // Mobile Menu Toggle
 document.addEventListener("click", function (e) {
-    if (e.target.id === "mobile-menu-button") {
+    const button = e.target.closest("#mobile-menu-button");
+
+    if (button) {
         const menu = document.getElementById("mobile-menu");
+        if (!menu) return;
+
         menu.classList.toggle("hidden");
     }
 });
