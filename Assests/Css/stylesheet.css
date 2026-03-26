@@ -1,26 +1,161 @@
- body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .hero-bg {
-            background-image: url('images/mainbanner.jpg');
-        }
-        .grey-custome{
-            background-color: rgb(31 32 34 / 80%);
-        }
-        .counter-value {
-            transition: all 0.5s ease-in-out;
-        }
-        /* Custom scrollbar for a more modern look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4af37; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a27b02; 
-        }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --travertine-50: #fcf8f2;
+    --travertine-100: #f6efe5;
+    --travertine-200: #efe3d3;
+    --travertine-300: #e2d0b9;
+    --travertine-400: #cfb796;
+    --travertine-500: #b7956f;
+    --travertine-700: #7f6348;
+    --travertine-800: #5a4634;
+    --ink-900: #3a2c21;
+    --ink-700: #5e4a38;
+    --line-soft: rgba(117, 91, 66, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(226, 208, 185, 0.45), transparent 36%),
+        radial-gradient(circle at 90% 18%, rgba(207, 183, 150, 0.35), transparent 34%),
+        linear-gradient(150deg, #fcf8f2 0%, #f6efe5 45%, #efe3d3 100%);
+    color: var(--ink-700);
+}
+
+h1, h2, h3, .display-heading {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.02em;
+    color: var(--ink-900);
+}
+
+.hero-bg {
+    background-image: url('images/mainbanner.jpg');
+}
+
+.grey-custome {
+    background: linear-gradient(120deg, rgba(252, 248, 242, 0.92), rgba(246, 239, 229, 0.9));
+    border-bottom: 1px solid var(--line-soft);
+    backdrop-filter: blur(10px);
+}
+
+.counter-value {
+    transition: all 0.5s ease-in-out;
+}
+
+/* Tailwind color remap to light travertine theme */
+.bg-slate-950,
+.bg-gray-950 {
+    background-color: #f6efe5 !important;
+}
+
+.bg-slate-900 {
+    background-color: #fcf8f2 !important;
+}
+
+.bg-slate-800 {
+    background-color: #f4ebdf !important;
+}
+
+.from-slate-950 {
+    --tw-gradient-from: #f6efe5 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(246 239 229 / 0) var(--tw-gradient-to-position) !important;
+}
+
+.via-slate-900 {
+    --tw-gradient-to: rgb(252 248 242 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), #fcf8f2 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+.to-slate-800 {
+    --tw-gradient-to: #efe3d3 var(--tw-gradient-to-position) !important;
+}
+
+.text-white {
+    color: var(--ink-900) !important;
+}
+
+.text-gray-200,
+.text-gray-300 {
+    color: var(--ink-700) !important;
+}
+
+.text-gray-400 {
+    color: #78604a !important;
+}
+
+.border-slate-700,
+.border-gray-700 {
+    border-color: var(--line-soft) !important;
+}
+
+/* Light card and section depth */
+.bg-slate-800,
+.bg-slate-900,
+.bg-gray-950,
+.grey-custome {
+    box-shadow: 0 12px 30px rgba(88, 66, 44, 0.08);
+}
+
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl {
+    border: 1px solid rgba(117, 91, 66, 0.16);
+}
+
+/* Buttons and highlights */
+.bg-gradient-to-r {
+    background-image: linear-gradient(90deg, #cdb08e 0%, #e2d0b9 50%, #b79673 100%) !important;
+}
+
+.from-\[\#a27b02\],
+.via-\[\#d4af37\],
+.to-\[\#a27b02\],
+.to-\[\#FCEEBE\] {
+    background-image: linear-gradient(90deg, #cdb08e 0%, #e2d0b9 50%, #b79673 100%) !important;
+}
+
+.text-\[\#d4af37\],
+.text-\[\#FDEEBE\] {
+    color: #8f6d4d !important;
+}
+
+.bg-\[\#d4af37\],
+.bg-\[\#FDEEBE\] {
+    background-color: #d7c3a7 !important;
+    color: #4b3929 !important;
+}
+
+a:hover,
+.hover\:text-\[\#FDEEBE\]:hover {
+    color: #9b7754 !important;
+}
+
+.hover\:bg-black:hover,
+.hover\:bg-slate-900:hover {
+    background-color: #bfa27f !important;
+}
+
+.bg-black,
+.bg-black\/50,
+.bg-black\/70 {
+    background-color: rgba(95, 72, 50, 0.35) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #efe3d3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d7c3a7, #b7956f);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e2d0b9, #cfb796);
+}
