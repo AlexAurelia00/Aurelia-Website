@@ -21,14 +21,213 @@
     <main>
         <!-- HOME PAGE CONTENT -->
         <div id="page-home">
-            <!-- Hero Section -->
-            <section style="background-image: url('images/mainbanner.jpg');" class="hero-bg bg-cover bg-center h-[60vh] md:h-[80vh] flex items-center">
-                <div class="bg-black bg-opacity-50 w-full h-full flex items-center">
-                    <div class="container mx-auto px-6 text-white text-left max-w-4xl">
-                        <p class="text-lg font-light text-[#FDEEBE]">SMART SOLUTIONS FOR A DYNAMIC WORLD</p>
-                        <h1 class="text-4xl md:text-6xl font-bold my-4 leading-tight">DELIVERING AN INNOVATIVE DESIGN THAT WORKS TODAY AND SHAPES TOMORROW</h1>
-                        <!-- <p class="text-lg md:text-xl mb-8">We combine our expertise in engineering, planning, and design with intelligent, future-ready solutions that bring your project to life with stunning detail.</p> -->
-                        <a href="about.html" class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#a27b02] text-white px-8 py-3 rounded-full hover:brightness-125 transition-all duration-300 font-bold">Learn More</a>
+            <!-- Hero Section with Image Carousel -->
+            <section class="hero-bg relative h-[60vh] md:h-[80vh] flex items-center overflow-hidden">
+                <!-- Carousel Images Container -->
+                <div class="absolute inset-0 w-full h-full">
+                    <div id="carouselImages" class="relative w-full h-full">
+                        <img src="Projects/Jaipur/A10s.jpg" alt="Slide 1" class="carousel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                        <img src="images/mainbanner.jpg" alt="Slide 2" class="carousel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                        <img src="images/Mainbanner2.jpg" alt="Slide 3" class="carousel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                        <img src="images/interior.jpg" alt="Slide 4" class="carousel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                    </div>
+                </div>
+
+                <!-- Dark Overlay -->
+                <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+                <!-- Text Content -->
+                <div class="container mx-auto px-6 text-white text-left max-w-4xl relative z-20">
+                    <div class="bg-black/25 p-8 rounded-lg backdrop-blur-sm p-8 rounded-lg backdrop-blur-sm">
+                        <!-- <p class="text-lg font-light text-[#FDEEBE] tracking-widest">AURELIA DESIGNS</p> -->
+
+                        <div class="text-2xl font-bold text-white">
+            <a href="index.html" class="text-[#d4af37]">Aurelia <span class="text-[#d4af37]">design</span></a>
+        </div>
+                        <h1 class="text-4xl md:text-6xl font-bold my-6 leading-tight" style="
+    color: #bda283;
+">Complete Architectural, Interior & MEP Solutions</h1>
+                        <p class="text-lg md:text-xl mb-8 " style="
+    color: #b79673;
+">From concept to handover — we design, plan and execute everything.</p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <a href="contact.html" class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#a27b02] text-white px-8 py-3 rounded-full hover:brightness-125 transition-all duration-300 font-bold">Get Consultation</a>
+                            <a href="projects.html" class="border-2 border-[#d4af37] text-[#d4af37] px-8 py-3 rounded-full hover:bg-[#d4af37] hover:text-slate-900 transition-all duration-300 font-bold">View Projects</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" onclick="currentSlide(0)"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" onclick="currentSlide(1)"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" onclick="currentSlide(2)"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" onclick="currentSlide(3)"></button>
+                </div>
+            </section>
+
+            <script>
+                let carouselIndex = 0;
+                const carouselInterval = 6000; // Change image every 6 seconds
+
+                function showSlide(index) {
+                    const images = document.querySelectorAll('.carousel-img');
+                    const indicators = document.querySelectorAll('.carousel-indicator');
+                    
+                    if (index >= images.length) {
+                        carouselIndex = 0;
+                    } else if (index < 0) {
+                        carouselIndex = images.length - 1;
+                    } else {
+                        carouselIndex = index;
+                    }
+
+                    // Hide all images
+                    images.forEach(img => img.classList.add('opacity-0'));
+                    indicators.forEach(ind => ind.classList.remove('bg-white'));
+
+                    // Show current image
+                    images[carouselIndex].classList.remove('opacity-0');
+                    images[carouselIndex].classList.add('opacity-100');
+                    indicators[carouselIndex].classList.add('bg-white');
+                }
+
+                function currentSlide(index) {
+                    carouselIndex = index;
+                    showSlide(carouselIndex);
+                    resetCarouselTimer();
+                }
+
+                function nextSlide() {
+                    showSlide(carouselIndex + 1);
+                }
+
+                let carouselTimer;
+
+                function startCarouselTimer() {
+                    carouselTimer = setInterval(nextSlide, carouselInterval);
+                }
+
+                function resetCarouselTimer() {
+                    clearInterval(carouselTimer);
+                    startCarouselTimer();
+                }
+
+                // Initialize carousel
+                document.addEventListener('DOMContentLoaded', function() {
+                    showSlide(0);
+                    startCarouselTimer();
+                });
+            </script>
+
+
+            <!-- Our Services Section -->
+            <section class="py-20 bg-slate-800">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center mb-4 text-white">OUR SERVICES</h2>
+                    <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive design and execution services tailored for modern living and commercial spaces.</p>
+                    
+                    <!-- Services Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                        <!-- Architectural Services -->
+                        <a href="architectural-services.html" class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37] hover:shadow-xl hover:border-[#FDEEBE] transition-all duration-300 cursor-pointer">
+                            <div class="mb-4">
+                                <svg class="w-12 h-12 text-[#d4af37] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15L3.07 3.07a1.5 1.5 0 0 1 2.12-2.12L17.12.95a1.5 1.5 0 0 1 2.12 2.12L17.12 17.12M19.5 19.5h-3m-6 0h-3" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Architectural Services</h3>
+                            <p class="text-[#d4af37] font-semibold text-sm mb-3">Smart Planning. Strong Foundations.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li>• Layout Planning</li>
+                                <li>• Plans, Elevations & Sections</li>
+                                <li>• Working Drawings</li>
+                                <li>• Structural Drawings</li>
+                                <li>• 3D Elevations</li>
+                            </ul>
+                        </a>
+
+                        <!-- Interior Design -->
+                        <a href="interior-design.html" class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37] hover:shadow-xl hover:border-[#FDEEBE] transition-all duration-300 cursor-pointer">
+                            <div class="mb-4">
+                                <svg class="w-12 h-12 text-[#d4af37] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 4.125C2.25 3.504 2.754 3 3.375 3h17.25c.621 0 1.125.504 1.125 1.125m-18.375 2.25H21m-7.5 13.5h-7.5" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Interior Design</h3>
+                            <p class="text-[#d4af37] font-semibold text-sm mb-3">Designed for Living. Built for Comfort.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li>• Space Planning</li>
+                                <li>• Design Drawings</li>
+                                <li>• 3D Visualization</li>
+                                <li>• Turnkey Execution</li>
+                                <li>• Custom Designs</li>
+                            </ul>
+                        </a>
+
+                        <!-- MEP Services -->
+                        <a href="mep-services.html" class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37] hover:shadow-xl hover:border-[#FDEEBE] transition-all duration-300 cursor-pointer">
+                            <div class="mb-4">
+                                <svg class="w-12 h-12 text-[#d4af37] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5.432 9.75m0 0H15m-10.5 0a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm7.5-10.5H21m-7.75 0a9 9 0 0 0-5.156 1.515m7.5 6.694v7.971m0 0v5.25m0-5.25h2.25m0 0h3.75" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">MEP Services</h3>
+                            <p class="text-[#d4af37] font-semibold text-sm mb-3">Engineered Systems. Seamless Integration.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li>• Electrical Layouts</li>
+                                <li>• Plumbing & Drainage</li>
+                                <li>• HVAC & Ducting</li>
+                                <li>• Mechanical Services</li>
+                                <li>• MEP Coordination</li>
+                            </ul>
+                        </a>
+
+                        <!-- Turnkey & Execution -->
+                        <a href="turnkey-execution.html" class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37] hover:shadow-xl hover:border-[#FDEEBE] transition-all duration-300 cursor-pointer">
+                            <div class="mb-4">
+                                <svg class="w-12 h-12 text-[#d4af37] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.386c.522 0 .978.29 1.186.75l.841 1.5H21v7.031c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V9.75h7.587l.841-1.5c.208-.46.664-.75 1.186-.75h1.386M5 17h14" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Turnkey & Execution</h3>
+                            <p class="text-[#d4af37] font-semibold text-sm mb-3">From Concept to Handover.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li>• Complete Execution</li>
+                                <li>• Civil & Renovation Work</li>
+                                <li>• Site Supervision</li>
+                                <li>• Skilled Workforce</li>
+                                <li>• Project Management</li>
+                            </ul>
+                        </a>
+
+                        <!-- Custom Luxury Furniture -->
+                        <a href="custom-furniture.html" class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37] hover:shadow-xl hover:border-[#FDEEBE] transition-all duration-300 cursor-pointer">
+                            <div class="mb-4">
+                                <svg class="w-12 h-12 text-[#d4af37] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 6.375c0-1.6 1.123-2.981 2.625-2.981h10.05c1.502 0 2.625 1.381 2.625 2.981v3.75c0 1.6-1.123 2.981-2.625 2.981H7.875c-1.502 0-2.625-1.381-2.625-2.981v-3.75zM12 12.75h.375a.375.375 0 0 0 0-.75H12c-.621 0-1.125.504-1.125 1.125v7.5c0 .621.504 1.125 1.125 1.125h7.5c.621 0 1.125-.504 1.125-1.125v-7.5c0-.621-.504-1.125-1.125-1.125h-.375a.375.375 0 0 0 0 .75H12v7.5" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Custom Luxury Furniture</h3>
+                            <p class="text-[#d4af37] font-semibold text-sm mb-3">Crafted Furniture. Tailored Luxury.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li>• Custom Furniture Design</li>
+                                <li>• Sofas, Beds & Tables</li>
+                                <li>• Cabinets & Storage</li>
+                                <li>• Upholstery Work</li>
+                                <li>• Made-to-Order</li>
+                            </ul>
+                        </a>
+                    </div>
+
+                    <!-- Explore Full Services Link -->
+                    <div class="text-center">
+                        <a href="services.html" class="text-[#d4af37] hover:text-[#FDEEBE] font-semibold transition">Explore All Services →</a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- What We Offer Section (Overview) -->
+            <section class="py-20 bg-slate-800">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-4xl font-bold mb-8 text-white">What We Offer</h2>
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">We deliver complete design and execution services for residential villas, small commercial spaces, and bespoke interiors. Our approach integrates architecture, interior design, MEP engineering, and skilled execution into one seamless process.</p>
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">Every project gets meticulous attention—from detailed drawings to precise site supervision. Our team comprises architects, engineers, carpenters, painters, and upholsterers working in perfect coordination to bring modern, premium interiors to life.</p>
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">We believe in clean design, thoughtful details, and finishing that lasts. Quality isn't negotiable.</p>
                     </div>
                 </div>
             </section>
@@ -42,109 +241,438 @@
                             <div class="flex justify-center mb-4">
                                 <svg class="w-16 h-16 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 text-white">EXCEPTIONAL QUALITY</h3>
-                            <p class="text-gray-400">We create aesthetically appealing designs that bring your projects to life with stunning detail and accuracy.</p>
+                            <h3 class="text-2xl font-bold mb-2 text-white">End-to-End Solutions</h3>
+                            <p class="text-gray-400">Architecture, interiors, MEP engineering, and turnkey execution—all seamlessly coordinated under one roof.</p>
                         </div>
                         <!-- Feature 2 -->
                         <div class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37]">
                             <div class="flex justify-center mb-4">
                                 <svg class="w-16 h-16 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 text-white">COMPETITIVE PRICES</h3>
-                            <p class="text-gray-400">We offer cost-effective and integrated planning with a fully-coordinated process that provides the highest possible value for your project.</p>
+                            <h3 class="text-2xl font-bold mb-2 text-white">Skilled Team</h3>
+                            <p class="text-gray-400">Expert architects, designers, engineers, and craftspeople dedicated to premium quality and flawless execution.</p>
                         </div>
                         <!-- Feature 3 -->
                         <div class="bg-slate-900 p-8 rounded-lg shadow-lg text-center border-t-4 border-[#d4af37]">
                             <div class="flex justify-center mb-4">
                             <svg class="w-16 h-16 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 text-white">TIMELY DELIVERY</h3>
-                            <p class="text-gray-400">Our agile project management and seamless workflow ensures you receive your project output with no time overruns.</p>
+                            <h3 class="text-2xl font-bold mb-2 text-white">On-Time Delivery</h3>
+                            <p class="text-gray-400">Rigorous project management and structured workflows ensure your project completes on schedule, every time.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Smart Design Section -->
+
+
+            <!-- Our Services (5 Cards) Section -->
+             <section class="py-20 md:py-24 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-12 md:grid-cols-3">
+                    
+                    <!-- Jaipur Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('jaipur')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="../Projects/Jaipur/A10s.jpg" alt="Jaipur Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Jaipur Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Premium residential and interior design project featuring custom furniture, detailed architectural plans, and complete interior execution.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 1 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sikar Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('sikar')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="../Projects/Sikar/A11.jpg" alt="Sikar Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Sikar Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Comprehensive design and execution project showcasing architectural planning, interior design, custom cabinetry, and premium finishing touches.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 15 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Delhi Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('delhi')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="Projects/Delhi/A1s.png" alt="Delhi Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Delhi Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Advanced MEP coordination, architectural excellence, and turnkey execution project demonstrating precision and professional craftsmanship.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 6 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Modal -->
+    <div id="galleryModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+        <div class="relative w-full max-w-5xl">
+            <!-- Close Button -->
+            <button onclick="closeGallery()" class="absolute -top-10 right-0 text-white hover:text-[#d4af37] transition text-2xl font-bold">✕</button>
+            
+            <!-- Main Image -->
+            <div class="relative bg-slate-900 rounded-lg overflow-hidden">
+                <img id="mainImage" src="" alt="Project Gallery" class="w-full h-auto object-cover max-h-[70vh]">
+                
+                <!-- Navigation Arrows -->
+                <button onclick="previousImage()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#d4af37] text-white p-3 rounded-r-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextImage()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#d4af37] text-white p-3 rounded-l-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Image Counter -->
+            <div class="text-center mt-4">
+                <p class="text-white text-lg font-semibold"><span id="imageCounter">1</span> / <span id="imageTotal">5</span></p>
+                <p id="projectTitle" class="text-[#d4af37] text-sm mt-1"></p>
+            </div>
+
+            <!-- Thumbnail Navigation -->
+            <div id="thumbnailContainer" class="flex gap-2 mt-6 overflow-x-auto pb-2 justify-center">
+                <!-- Thumbnails will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="Assests/js/Reuse.js"></script>
+    
+    <script>
+        // Project images configuration
+        const projects = {
+            jaipur: {
+                title: 'Jaipur Project',
+                images: [
+                    '../Projects/Jaipur/A10s.jpg'
+                ]
+            },
+            sikar: {
+                title: 'Sikar Project',
+                images: [
+                    '../Projects/Sikar/A11.jpg',
+                    '../Projects/Sikar/A13.jpg',
+                    '../Projects/Sikar/A14.jpg',
+                    '../Projects/Sikar/A15.jpg',
+                    '../Projects/Sikar/A1s.jpg',
+                    '../Projects/Sikar/A2.jpg',
+                    '../Projects/Sikar/A21.jpg',
+                    '../Projects/Sikar/A4s.jpg',
+                    '../Projects/Sikar/A5.jpg',
+                    '../Projects/Sikar/A6.jpg',
+                    '../Projects/Sikar/A7.jpg',
+                    '../Projects/Sikar/A8a.jpg',
+                    '../Projects/Sikar/A9.jpg',
+                    '../Projects/Sikar/Untitled-2.jpg',
+                    '../Projects/Sikar/Untitled-3.jpg'
+                ]
+            },
+            delhi: {
+                title: 'Delhi Project',
+                images: [
+                    '../Projects/Delhi/A1s.png',
+                    '../Projects/Delhi/A2.png',
+                    '../Projects/Delhi/A3.png',
+                    '../Projects/Delhi/A5.png',
+                    '../Projects/Delhi/A6.png',
+                    '../Projects/Delhi/A7.png'
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentImageIndex = 0;
+
+        function openGallery(projectName) {
+            currentProject = projectName;
+            currentImageIndex = 0;
+            const project = projects[projectName];
+            
+            // Update modal title
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('imageTotal').textContent = project.images.length;
+            
+            // Display main image
+            displayImage();
+            
+            // Generate thumbnails
+            generateThumbnails();
+            
+            // Show modal
+            document.getElementById('galleryModal').classList.remove('hidden');
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            currentProject = null;
+        }
+
+        function displayImage() {
+            const project = projects[currentProject];
+            document.getElementById('mainImage').src = project.images[currentImageIndex];
+            document.getElementById('imageCounter').textContent = currentImageIndex + 1;
+            updateThumbnailActive();
+        }
+
+        function nextImage() {
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            displayImage();
+        }
+
+        function previousImage() {
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            displayImage();
+        }
+
+        function generateThumbnails() {
+            const project = projects[currentProject];
+            const container = document.getElementById('thumbnailContainer');
+            container.innerHTML = '';
+            
+            project.images.forEach((image, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = image;
+                thumbnail.alt = `Thumbnail ${index + 1}`;
+                thumbnail.className = `w-20 h-20 object-cover rounded-lg cursor-pointer border-2 transition ${index === 0 ? 'border-[#d4af37]' : 'border-slate-600 hover:border-[#d4af37]'}`;
+                thumbnail.onclick = () => {
+                    currentImageIndex = index;
+                    displayImage();
+                };
+                container.appendChild(thumbnail);
+            });
+        }
+
+        function updateThumbnailActive() {
+            const thumbnails = document.querySelectorAll('#thumbnailContainer img');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentImageIndex) {
+                    thumb.classList.remove('border-slate-600');
+                    thumb.classList.add('border-[#d4af37]');
+                } else {
+                    thumb.classList.remove('border-[#d4af37]');
+                    thumb.classList.add('border-slate-600');
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (currentProject) {
+                if (e.key === 'ArrowLeft') previousImage();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'Escape') closeGallery();
+            }
+        });
+
+        // Close modal when clicking outside image
+        document.getElementById('galleryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'galleryModal') closeGallery();
+        });
+    </script>
+
+
+
+
+
+            <!-- Our Clients Section -->
+            <!-- Our Clients Section -->
+
+
+<style>
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-slide {
+    animation: slide 20s linear infinite;
+  }
+</style>
+
+
+            <!-- Process Section -->
+            <section class="py-20 bg-slate-800">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center mb-12 text-white">Our Process</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                        <!-- Step 1 -->
+                        <div class="text-center">
+                            <div class="bg-[#d4af37] text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Consultation</h3>
+                            <p class="text-gray-400 text-sm">We listen to your vision, understand your needs, and outline the scope of work.</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="text-center">
+                            <div class="bg-[#d4af37] text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Design & Planning</h3>
+                            <p class="text-gray-400 text-sm">Our team creates detailed design concepts and strategic planning for execution.</p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="text-center">
+                            <div class="bg-[#d4af37] text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Drawings & Approval</h3>
+                            <p class="text-gray-400 text-sm">Complete technical drawings, MEP coordination, and your written approval.</p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="text-center">
+                            <div class="bg-[#d4af37] text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Execution</h3>
+                            <p class="text-gray-400 text-sm">On-site supervision with skilled craftspeople ensuring flawless quality.</p>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="text-center">
+                            <div class="bg-[#d4af37] text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">5</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Handover</h3>
+                            <p class="text-gray-400 text-sm">Final inspection, documentation, and a project completed to perfection.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
             <section class="py-20 bg-slate-900">
                 <div class="container mx-auto px-6">
-                    <div class="flex flex-wrap items-center -mx-4">
-                        <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-                            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">SMART DESIGN. SEAMLESS DELIVERY.</h2>
-                            <p class="text-gray-400 mb-4">Our work goes beyond just creating drawings. It's a promise of perfection, value, and accuracy. We design spaces to be future-ready and solutions that are relevant for the future. We're not just developing drawings, we're creating an experience and user-friendly spaces that reflect personality and brand.</p>
-                            <p class="text-gray-400">Our journey has been one of innovation and trust. From our headquarters in Kerala, India, we've delivered our expertise and service to a wide variety of clients, from the US, UK, Europe, Australia, and New Zealand. Our team comprises experts from BIM, MEP, and engineering, and this talent has helped us achieve outcomes of exceptional quality.</p>
+                    <h2 class="text-4xl font-bold text-center mb-12 text-white">Why Choose Aurelia Designs</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#d4af37] text-slate-900">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">End-to-End Solutions</h3>
+                                <p class="text-gray-400">Everything from architecture to interiors to MEP under one coordinated roof. No handoffs. No delays.</p>
+                            </div>
                         </div>
-                        <div class="w-full lg:w-1/2 px-4">
-                            <img src="images/Mainbanner2.jpg" alt="Amphitheatre" class="rounded-lg shadow-xl w-full">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#d4af37] text-slate-900">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Skilled Team</h3>
+                                <p class="text-gray-400">Expert architects, engineers, carpenters, painters, and upholsterers working as one unified team.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Stats Section -->
-            <section id="stats" class="bg-gray-950 text-white py-16">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="250">147</h3>
-                            <p class="text-[#d4af37] font-semibold">PROJECTS COMPLETED</p>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#d4af37] text-slate-900">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Detailed Drawings</h3>
+                                <p class="text-gray-400">Every millimeter planned. Plans, elevations, sections, and working drawings that leave zero room for doubt.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="100">4.8/5</h3>
-                            <p class="text-[#d4af37] font-semibold">CLIENT SATISFACTION %</p>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#d4af37] text-slate-900">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">On-Time Delivery</h3>
+                                <p class="text-gray-400">Rigorous project management and timelines that are met. Always. That's our promise.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-5xl font-bold mb-2 counter-value" data-target="85">25</h3>
-                            <p class="text-[#d4af37] font-semibold">EXPERT ARCHITECTS & DESIGNERS</p>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#d4af37] text-slate-900">
+                                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Customized Designs</h3>
+                                <p class="text-gray-400">No cookie-cutter solutions. Every project is bespoke, tailored to your vision and lifestyle.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Call to Action Section -->
-            <section class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#FCEEBE] text-slate-900">
-                <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
-                    <h2 class="text-3xl font-bold text-center md:text-left mb-4 md:mb-0">SMART BIM AND MEP SERVICES FOR GLOBAL PROJECTS</h2>
-                    <a href="contact.html" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-black transition duration-300 font-bold">Get In Touch</a>
+            <section class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#FCEEBE] text-slate-900 py-16">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Space?</h2>
+                        <p class="text-slate-800 mb-8 text-lg">Let's create premium design and execution tailored to your vision.</p>
+                        <a href="contact.html" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-black transition duration-300 font-bold inline-block">Get Free Consultation</a>
+                    </div>
                 </div>
             </section>
 
-            <!-- Our Services Section -->
+            
+
+            <!-- Project Types Section -->
             <section class="py-20 bg-slate-800">
                 <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 text-white">OUR SERVICES</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-    <div class="relative rounded-lg overflow-hidden shadow-lg group">
-        <img src="images/architectural.jpg.webp" class="w-full h-64 object-cover" alt="Architectural Services">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <a href="services.html" class="text-white text-2xl font-bold">Architectural Services</a>
-        </div>
-    </div>
-    <div class="relative rounded-lg overflow-hidden shadow-lg group">
-        <img src="images/mainbanner.jpg" class="w-full h-64 object-cover" alt="Interior Design">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <a href="services.html" class="text-white text-2xl font-bold">Interior Design</a>
-        </div>
-    </div>
-    <div class="relative rounded-lg overflow-hidden shadow-lg group">
-        <img src="images/interior.jpg" class="w-full h-64 object-cover" alt="MEP Services">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <a href="bim.html" class="text-white text-2xl font-bold">MEP Services</a>
-        </div>
-    </div>
-    <div class="relative rounded-lg overflow-hidden shadow-lg group">
-        <img src="images/interior.jpg" class="w-full h-64 object-cover" alt="Project Management">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition duration-300 group-hover:bg-opacity-70">
-            <a href="projects.html" class="text-white text-2xl font-bold">Project Management</a>
-        </div>
-    </div>
-</div>
+                    <h2 class="text-4xl font-bold text-center mb-12 text-white">Project Types</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg></div><h3 class="font-bold text-white">Villas & Residences</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg></div><h3 class="font-bold text-white">Commercial Spaces</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m18 0h-1.5m-15 0H3m18 0h-1.5" /></svg></div><h3 class="font-bold text-white">Restaurants & Hospitality</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></div><h3 class="font-bold text-white">Renovations</h3></div>
+                        <div class="flex flex-col items-center col-span-2 md:col-span-1"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg></div><h3 class="font-bold text-white">Custom Furniture</h3></div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Our Clients Section -->
-            <!-- Our Clients Section -->
-<section class="py-16 bg-gray-950">
+            <!-- Sectors We Work In Section -->
+            <section class="py-20 bg-slate-800">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center mb-12 text-white">SECTORS WE WORK IN</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg></div><h3 class="font-bold text-white">RESIDENTIAL</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg></div><h3 class="font-bold text-white">COMMERCIAL</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m18 0h-1.5m-15 0H3m18 0h-1.5m-15 0H3m18 0h-1.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 4.5a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0v-.01a.75.75 0 0 1 .75-.75Zm-3.75-.75a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Z" /></svg></div><h3 class="font-bold text-white">INDUSTRIAL</h3></div>
+                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h3m-3 3h3m-3 3h3m-3 3h3m-3 3h3m-6-3h.008v.008H7.5V15Zm.008 0h.008v.008H7.5V15Zm-3 3h.008v.008H4.5V18Zm.008 0h.008v.008H4.5V18Zm-3-3h.008v.008H1.5V15Zm.008 0h.008v.008H1.5V15Zm15-3h.008v.008H16.5V15Zm.008 0h.008v.008H16.5V15Zm-3 3h.008v.008H13.5V18Zm.008 0h.008v.008H13.5V18Zm-3-3h.008v.008H10.5V15Zm.008 0h.008v.008H10.5V15ZM22.5 12h-3m-3 0h3m-3 0h-3" /></svg></div><h3 class="font-bold text-white">HEALTHCARE</h3></div>
+                        <div class="flex flex-col items-center col-span-2 md:col-span-1 lg:col-auto"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg></div><h3 class="font-bold text-white">INSTITUTIONAL</h3></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-950">
   <div class="container mx-auto px-6">
     <h2 class="text-4xl font-bold text-center mb-12 text-white">OUR CLIENTS</h2>
 
@@ -164,31 +692,6 @@
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .animate-slide {
-    animation: slide 20s linear infinite;
-  }
-</style>
-
-
-            <!-- Sectors We Work In Section -->
-            <section class="py-20 bg-slate-800">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 text-white">SECTORS WE WORK IN</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
-                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg></div><h3 class="font-bold text-white">RESIDENTIAL</h3></div>
-                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg></div><h3 class="font-bold text-white">COMMERCIAL</h3></div>
-                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m18 0h-1.5m-15 0H3m18 0h-1.5m-15 0H3m18 0h-1.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 4.5a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0v-.01a.75.75 0 0 1 .75-.75Zm-3.75-.75a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Z" /></svg></div><h3 class="font-bold text-white">INDUSTRIAL</h3></div>
-                        <div class="flex flex-col items-center"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h3m-3 3h3m-3 3h3m-3 3h3m-3 3h3m-6-3h.008v.008H7.5V15Zm.008 0h.008v.008H7.5V15Zm-3 3h.008v.008H4.5V18Zm.008 0h.008v.008H4.5V18Zm-3-3h.008v.008H1.5V15Zm.008 0h.008v.008H1.5V15Zm15-3h.008v.008H16.5V15Zm.008 0h.008v.008H16.5V15Zm-3 3h.008v.008H13.5V18Zm.008 0h.008v.008H13.5V18Zm-3-3h.008v.008H10.5V15Zm.008 0h.008v.008H10.5V15ZM22.5 12h-3m-3 0h3m-3 0h-3" /></svg></div><h3 class="font-bold text-white">HEALTHCARE</h3></div>
-                        <div class="flex flex-col items-center col-span-2 md:col-span-1 lg:col-auto"><div class="bg-slate-900 border-2 border-slate-700 rounded-full p-6 mb-4"><svg class="w-12 h-12 text-[#d4af37]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg></div><h3 class="font-bold text-white">INSTITUTIONAL</h3></div>
-                    </div>
-                </div>
-            </section>
         </div>
 
     </main>

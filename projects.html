@@ -14,90 +14,275 @@
     <div id="header"></div>
 
     <main>
+        <!-- Hero Section -->
         <section class="relative overflow-hidden bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 py-20 md:py-24">
             <div class="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-[#d4af37]/20 blur-3xl"></div>
             <div class="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-[#a27b02]/20 blur-3xl"></div>
             <div class="container mx-auto px-6 relative z-10">
                 <p class="text-[#FDEEBE] tracking-widest text-sm mb-3">OUR PORTFOLIO</p>
-                <h1 class="text-4xl md:text-6xl font-bold text-white max-w-4xl">Signature Projects Built with Precision, Performance, and Style</h1>
-                <p class="text-gray-300 mt-5 max-w-3xl">Explore selected BIM, architecture, and interior projects designed for global clients across hospitality, residential, and commercial spaces.</p>
-                <div class="mt-8 flex flex-wrap gap-3">
-                    <span class="px-4 py-2 rounded-full bg-[#d4af37] text-slate-900 font-semibold">Hospitality</span>
-                    <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-gray-200">Residential</span>
-                    <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-gray-200">Commercial</span>
-                    <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-gray-200">MEP + BIM</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white max-w-4xl">Signature Projects Built with Precision & Excellence</h1>
+                <p class="text-gray-300 mt-5 max-w-3xl">Explore our portfolio of completed projects across residential, commercial, and design spaces. Click any project to view the gallery.</p>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="py-20 md:py-24 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="grid gap-12 md:grid-cols-3">
+                    
+                    <!-- Jaipur Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('jaipur')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="../Projects/Jaipur/A10s.jpg" alt="Jaipur Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Jaipur Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Premium residential and interior design project featuring custom furniture, detailed architectural plans, and complete interior execution.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 1 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sikar Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('sikar')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="../Projects/Sikar/A11.jpg" alt="Sikar Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Sikar Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Comprehensive design and execution project showcasing architectural planning, interior design, custom cabinetry, and premium finishing touches.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 15 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Delhi Project -->
+                    <article class="group cursor-pointer rounded-2xl overflow-hidden border border-slate-700 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" onclick="openGallery('delhi')">
+                        <div class="relative h-80 overflow-hidden bg-slate-800">
+                            <img src="Projects/Delhi/A1s.png" alt="Delhi Project" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-white mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    <p class="text-white font-semibold">View Gallery</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-gradient-to-b ">
+                            <h2 class="text-2xl font-bold text-white mb-3">Delhi Project</h2>
+                            <p class="text-gray-400 mb-4 leading-relaxed">Advanced MEP coordination, architectural excellence, and turnkey execution project demonstrating precision and professional craftsmanship.</p>
+                            <div class="flex items-center gap-2 text-[#d4af37] font-semibold">
+                                <span>📸 6 Images</span>
+                                <span class="text-gray-500">•</span>
+                                <span>Click to explore →</span>
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-20 bg-slate-900">
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#FCEEBE] text-slate-900 py-16">
             <div class="container mx-auto px-6">
-                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/mainbanner.jpg" alt="Luxury Hotel Renovation" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Hospitality</span>
-                        </div>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold text-white">Luxury Hotel BIM Renovation</h2>
-                            <p class="text-gray-400 mt-3">Complete BIM coordination for a 5-star property upgrade with clash-free MEP and fast execution timelines.</p>
-                            <div class="mt-4 text-sm text-[#d4af37]">Location: Dubai | Area: 180,000 sq.ft.</div>
-                        </div>
-                    </article>
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Interested in Working With Us?</h2>
+                    <p class="text-slate-800 mb-8 text-lg">Let's create premium design and execution for your next project.</p>
+                    <a href="contact.html" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-black transition duration-300 font-bold inline-block">Get Free Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/interiornew.png" alt="Corporate Interior Design" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Commercial</span>
-                        </div>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold text-white">Corporate Workspace Transformation</h2>
-                            <p class="text-gray-400 mt-3">Modern interior design and lighting strategy for a productivity-focused headquarters with premium finishes.</p>
-                            <div class="mt-4 text-sm text-[#d4af37]">Location: Bengaluru | Area: 42,000 sq.ft.</div>
-                        </div>
-                    </article>
+    <div id="footer"></div>
 
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/architectural.jpg.webp" alt="Smart Residential Towers" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Residential</span>
-                        </div>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold text-white">Smart Residential Towers</h2>
-                            <p class="text-gray-400 mt-3">End-to-end architectural and BIM documentation for twin towers focused on energy and space optimization.</p>
-                            <div class="mt-4 text-sm text-[#d4af37]">Location: Kochi | Area: 260 Units</div>
-                        </div>
-                    </article>
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+        <div class="relative w-full max-w-5xl">
+            <!-- Close Button -->
+            <button onclick="closeGallery()" class="absolute -top-10 right-0 text-white hover:text-[#d4af37] transition text-2xl font-bold">✕</button>
+            
+            <!-- Main Image -->
+            <div class="relative bg-slate-900 rounded-lg overflow-hidden">
+                <img id="mainImage" src="" alt="Project Gallery" class="w-full h-auto object-cover max-h-[70vh]">
+                
+                <!-- Navigation Arrows -->
+                <button onclick="previousImage()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#d4af37] text-white p-3 rounded-r-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextImage()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#d4af37] text-white p-3 rounded-l-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
 
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/interior.jpg" alt="Boutique Retail Studio" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Retail</span>
-                        </div>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold text-white">Boutique Retail Experience Center</h2>
-                            <p class="text-gray-400 mt-3">Interior and brand-space design crafted to improve flow, engagement, and premium customer experience.</p>
-                            <div class="mt-4 text-sm text-[#d4af37]">Location: Mumbai | Area: 8,500 sq.ft.</div>
-                        </div>
-                    </article>
+            <!-- Image Counter -->
+            <div class="text-center mt-4">
+                <p class="text-white text-lg font-semibold"><span id="imageCounter">1</span> / <span id="imageTotal">5</span></p>
+                <p id="projectTitle" class="text-[#d4af37] text-sm mt-1"></p>
+            </div>
 
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/Mainbanner2.jpg" alt="Healthcare MEP Coordination" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Healthcare</span>
-                        </div>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold text-white">Multi-Speciality Hospital MEP</h2>
-                            <p class="text-gray-400 mt-3">Integrated MEP and fire safety modeling with high-accuracy construction documentation for critical zones.</p>
-                            <div class="mt-4 text-sm text-[#d4af37]">Location: Doha | Area: 120 Beds</div>
-                        </div>
-                    </article>
+            <!-- Thumbnail Navigation -->
+            <div id="thumbnailContainer" class="flex gap-2 mt-6 overflow-x-auto pb-2 justify-center">
+                <!-- Thumbnails will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
-                    <article class="group rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/70 hover:border-[#d4af37] transition-all duration-300 hover:-translate-y-1">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="images/bim.png" alt="Airport Terminal BIM" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-4 left-4 bg-black/70 px-3 py-1 rounded-full text-xs tracking-wide text-[#FDEEBE]">Infrastructure</span>
-                        </div>
+    <script src="Assests/js/Reuse.js"></script>
+    
+    <script>
+        // Project images configuration
+        const projects = {
+            jaipur: {
+                title: 'Jaipur Project',
+                images: [
+                    '../Projects/Jaipur/A10s.jpg'
+                ]
+            },
+            sikar: {
+                title: 'Sikar Project',
+                images: [
+                    '../Projects/Sikar/A11.jpg',
+                    '../Projects/Sikar/A13.jpg',
+                    '../Projects/Sikar/A14.jpg',
+                    '../Projects/Sikar/A15.jpg',
+                    '../Projects/Sikar/A1s.jpg',
+                    '../Projects/Sikar/A2.jpg',
+                    '../Projects/Sikar/A21.jpg',
+                    '../Projects/Sikar/A4s.jpg',
+                    '../Projects/Sikar/A5.jpg',
+                    '../Projects/Sikar/A6.jpg',
+                    '../Projects/Sikar/A7.jpg',
+                    '../Projects/Sikar/A8a.jpg',
+                    '../Projects/Sikar/A9.jpg',
+                    '../Projects/Sikar/Untitled-2.jpg',
+                    '../Projects/Sikar/Untitled-3.jpg'
+                ]
+            },
+            delhi: {
+                title: 'Delhi Project',
+                images: [
+                    '../Projects/Delhi/A1s.png',
+                    '../Projects/Delhi/A2.png',
+                    '../Projects/Delhi/A3.png',
+                    '../Projects/Delhi/A5.png',
+                    '../Projects/Delhi/A6.png',
+                    '../Projects/Delhi/A7.png'
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentImageIndex = 0;
+
+        function openGallery(projectName) {
+            currentProject = projectName;
+            currentImageIndex = 0;
+            const project = projects[projectName];
+            
+            // Update modal title
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('imageTotal').textContent = project.images.length;
+            
+            // Display main image
+            displayImage();
+            
+            // Generate thumbnails
+            generateThumbnails();
+            
+            // Show modal
+            document.getElementById('galleryModal').classList.remove('hidden');
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            currentProject = null;
+        }
+
+        function displayImage() {
+            const project = projects[currentProject];
+            document.getElementById('mainImage').src = project.images[currentImageIndex];
+            document.getElementById('imageCounter').textContent = currentImageIndex + 1;
+            updateThumbnailActive();
+        }
+
+        function nextImage() {
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            displayImage();
+        }
+
+        function previousImage() {
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            displayImage();
+        }
+
+        function generateThumbnails() {
+            const project = projects[currentProject];
+            const container = document.getElementById('thumbnailContainer');
+            container.innerHTML = '';
+            
+            project.images.forEach((image, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = image;
+                thumbnail.alt = `Thumbnail ${index + 1}`;
+                thumbnail.className = `w-20 h-20 object-cover rounded-lg cursor-pointer border-2 transition ${index === 0 ? 'border-[#d4af37]' : 'border-slate-600 hover:border-[#d4af37]'}`;
+                thumbnail.onclick = () => {
+                    currentImageIndex = index;
+                    displayImage();
+                };
+                container.appendChild(thumbnail);
+            });
+        }
+
+        function updateThumbnailActive() {
+            const thumbnails = document.querySelectorAll('#thumbnailContainer img');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentImageIndex) {
+                    thumb.classList.remove('border-slate-600');
+                    thumb.classList.add('border-[#d4af37]');
+                } else {
+                    thumb.classList.remove('border-[#d4af37]');
+                    thumb.classList.add('border-slate-600');
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (currentProject) {
+                if (e.key === 'ArrowLeft') previousImage();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'Escape') closeGallery();
+            }
+        });
+
+        // Close modal when clicking outside image
+        document.getElementById('galleryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'galleryModal') closeGallery();
+        });
+    </script>
+</body>
+</html>
                         <div class="p-6">
                             <h2 class="text-xl font-bold text-white">Airport Terminal BIM Package</h2>
                             <p class="text-gray-400 mt-3">Large-scale BIM package including architectural, structural, and MEP federated models for phased delivery.</p>

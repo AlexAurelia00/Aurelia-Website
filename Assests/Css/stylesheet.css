@@ -33,6 +33,11 @@ h1, h2, h3, .display-heading {
     background-image: url('images/mainbanner.jpg');
 }
 
+.custome-colour1{
+    background: #e1d7cb;
+    
+}
+
 .grey-custome {
     background: linear-gradient(120deg, rgba(252, 248, 242, 0.92), rgba(246, 239, 229, 0.9));
     border-bottom: 1px solid var(--line-soft);
