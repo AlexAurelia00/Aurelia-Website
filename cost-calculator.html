@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Construction & Interior Cost Calculator | Aurelia Designs</title>
+        <meta name="description" content="Use Aurelia Designs' Construction & Interior Cost Calculator to get an instant, approximate estimate for construction, interior and painting projects. Calculate cost by area (sq. ft.) for labour-only or material+labour options." />
+        <meta name="keywords" content="construction cost calculator, interior cost estimator, painting cost estimate, tile work estimate, Aurelia Designs" />
+        <link rel="canonical" href="https://www.aureliadesign.com/cost-calculator.html" />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Construction & Interior Cost Calculator | Aurelia Designs" />
+        <meta property="og:description" content="Get an instant approximate estimate for construction, interior, painting and tile work by area. Labour-only and Material+Labour rates included." />
+        <meta property="og:image" content="https://www.aureliadesign.com/images/interior.jpg" />
+        <meta property="og:url" content="https://www.aureliadesign.com/cost-calculator.html" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Construction & Interior Cost Calculator | Aurelia Designs" />
+        <meta name="twitter:description" content="Get an instant approximate estimate for construction, interior, painting and tile work by area. Labour-only and Material+Labour rates included." />
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Construction & Interior Cost Calculator - Aurelia Designs",
+            "description": "Use Aurelia Designs' calculator to estimate construction, interior, painting and tile work costs by area (sq. ft.).",
+            "url": "https://www.aureliadesign.com/cost-calculator.html"
+        }
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assests/Css/stylesheet.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif }
+        .card { background: linear-gradient(180deg, rgba(30,41,59,0.6), rgba(17,24,39,0.6)); }
+        .rate-badge { color:#bda283 }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200">
+
+    <div id="header"></div>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Hero -->
+        <section class="max-w-5xl mx-auto text-center mb-12">
+            <div class="bg-[url('images/interior.jpg')] bg-cover bg-center rounded-xl p-12 shadow-2xl">
+                <div class="bg-black/50 p-8 rounded-lg">
+                    <h1 class="text-3xl md:text-4xl font-bold text-[#bda283]">Construction & Interior Cost Calculator</h1>
+                    <p class="mt-3 text-gray-300 max-w-2xl mx-auto">Get an approximate project cost instantly. Use the calculator to estimate construction, interior, painting or tile-work costs based on area and selected pricing option. This tool helps homeowners, architects and developers quickly benchmark project budgets.</p>
+                    <p class="mt-3 text-gray-300 max-w-2xl mx-auto">Keywords: construction cost calculator, interior cost estimator, painting estimate, tile work estimate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Card -->
+        <section class="max-w-3xl mx-auto">
+            <div class="p-8 rounded-xl shadow-xl border border-[#2b2b2b]">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300">Select Type of Work</label>
+                        <select id="workType" class="mt-2 w-full bg-slate-800 text-gray-200 p-3 rounded-lg">
+                            <option>Construction</option>
+                            <option>Interior</option>
+                            <option>Painting</option>
+                            <option>Tile Work</option>
+                        </select>
+
+                        <label class="block text-sm font-semibold text-gray-300 mt-4">Select Cost Type</label>
+                        <select id="costType" class="mt-2 w-full bg-slate-800 text-gray-200 p-3 rounded-lg">
+                            <option>Labour Only</option>
+                            <option>Material + Labour</option>
+                        </select>
+
+                        <label class="block text-sm font-semibold text-gray-300 mt-4">Enter Area (sq. ft.)</label>
+                        <input id="areaInput" type="number" min="0" placeholder="e.g. 1000" class="mt-2 w-full bg-slate-800 text-gray-200 p-3 rounded-lg" />
+
+                        <div class="mt-4 flex gap-3">
+                            <button id="calcBtn" class="bg-gradient-to-r from-[#a27b02] via-[#d4af37] to-[#a27b02] px-6 py-3 rounded-full font-bold">Get Estimate</button>
+                            <button id="resetBtn" class="px-6 py-3 rounded-full border border-gray-600">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-start p-4">
+                        <div class="w-full bg-slate-800 p-6 rounded-lg">
+                            <p class="text-sm text-gray-400">Rate</p>
+                            <div id="rateDisplay" class="text-2xl font-bold mt-2 rate-badge">₹0 / sq. ft.</div>
+                            <p class="text-sm text-gray-400 mt-4">Estimated Total Cost</p>
+                            <div id="totalDisplay" class="text-4xl md:text-5xl font-extrabold mt-3 text-[#d4af37]">₹0</div>
+                        </div>
+
+                        <!-- Pie chart & breakdown -->
+                        <div class="w-full mt-4 p-4 bg-slate-800 rounded-lg">
+                            <canvas id="costBreakdownChart" aria-label="Cost breakdown pie chart" role="img"></canvas>
+                            <div id="breakdownList" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 "></div>
+                            <div id="breakdownTotal" class="mt-3 text-right font-bold ">Combined Total: ₹0</div>
+                        </div>
+
+                        <p class="text-xs text-gray-400 mt-4">This calculator provides an approximate cost estimate. Actual project costs may vary depending on design, materials, specifications, site conditions, project complexity and other requirements.</p>
+
+                        <div class="mt-4 p-4 bg-slate-800 rounded-md border border-gray-700">
+                            <p class="font-semibold text-gray-200">Note:</p>
+                            <p class="text-sm text-gray-400 mt-1">The above prices are based on standard material and specifications. If you choose premium or luxury materials, finishes, brands, designs, or specifications, the final cost may vary accordingly. This calculator provides an approximate estimate, not a fixed quotation.</p>
+                        </div>
+
+                        <div class="mt-6 w-full p-6 bg-slate-900 rounded-lg border border-gray-800">
+                            <h3 class="text-lg font-bold text-gray-200">Brands & Materials We Use</h3>
+                            <p class="text-sm text-gray-400 mt-2">These are commonly used brands and materials; actual selection may vary per project and client preference.</p>
+                            <ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-300">
+                                <li><strong class="text-gray-200">Cement:</strong> UltraTech ,Wonder ,ACC Cement</li>
+                                <li><strong class="text-gray-200">Paint & PU:</strong> Asian , Sirca, Ica  </li>
+                                <li><strong class="text-gray-200">Tiles:</strong> Kajaria, Johnson, Somany</li>
+                                <li><strong class="text-gray-200">Sanitaryware:</strong> Jaquar ,Kohler</li>
+                                <li><strong class="text-gray-200">Hardware:</strong> Hettich, Hafele , Ozone</li>
+                                <li><strong class="text-gray-200">Electrical:</strong> Schneider , Havells ,Pollycab</li>
+                                <li><strong class="text-gray-200">Woodwork:</strong> Century ,Green, Royle touch ,Merino, Action Tesa </li>
+
+                            </ul>
+                            <p class="text-xs text-gray-400 mt-3">The brands listed are examples of commonly used materials and are not mandatory for every project. Final brand selection depends on project requirements, specifications and client preferences.</p>
+                        </div>
+
+                        <!-- FAQ for rich results -->
+                        <div id="faq" class="mt-6 w-full bg-slate-800 p-6 rounded-md border border-gray-700">
+                            <h3 class="text-lg font-bold text-gray-200">Frequently Asked Questions</h3>
+                            <div class="mt-3 space-y-3 text-gray-300">
+                                <div>
+                                    <p class="font-semibold text-gray-200">Q: How accurate is this calculator?</p>
+                                    <p class="text-sm text-gray-400">A: This provides an approximate estimate based on standard rates. It is intended for initial budgeting only. For a detailed quotation, contact Aurelia Designs.</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-200">Q: Can I change materials or brands?</p>
+                                    <p class="text-sm text-gray-400">A: Yes — the calculator uses typical rates. Selecting premium materials or specific brands can increase costs; consult our team for exact pricing.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 w-full">
+                            <p class="text-sm text-gray-300 font-semibold">Want an Accurate Estimate?</p>
+                            <a href="contact.html" class="mt-3 inline-block bg-[#d4af37] text-slate-900 px-6 py-3 rounded-full font-bold">Talk to Aurelia Designs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- Important Disclaimer -->
+        <section class="max-w-3xl mx-auto mt-8">
+            <div class="text-xs text-gray-400 p-4 bg-slate-800 rounded-md border border-gray-700">
+                <strong class="text-gray-200">Important:</strong>
+                <span> This calculator provides an approximate cost estimate based on standard specifications and rates. Actual project costs may vary depending on site conditions, measurements, design complexity, material selection, brand, finish, labour requirements and other project-specific factors.</span>
+            </div>
+        </section>
+
+    <div id="footer"></div>
+
+    <script src="Assests/js/Reuse.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Assests/js/cost-calculator.js"></script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How accurate is this calculator?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "This provides an approximate estimate based on standard rates. It is intended for initial budgeting only. For a detailed quotation, contact Aurelia Designs."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I change materials or brands?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes — the calculator uses typical rates. Selecting premium materials or specific brands can increase costs; consult our team for exact pricing."
+                    }
+                }
+            ]
+        }
+        </script>
+</body>
+</html>
