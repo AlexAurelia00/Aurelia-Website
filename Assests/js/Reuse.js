@@ -1,3 +1,17 @@
+function initMobileMenu() {
+    const button = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    if (!button || !menu) return;
+
+    button.setAttribute("aria-expanded", "false");
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        const isHidden = menu.classList.toggle("hidden");
+        button.setAttribute("aria-expanded", String(!isHidden));
+    });
+}
+
 // Load Header
 fetch("FilesReuse/header.html")
     .then(res => res.text())
@@ -6,6 +20,7 @@ fetch("FilesReuse/header.html")
         if (!header) return;
 
         header.innerHTML = data;
+        initMobileMenu();
     });
 
 // Load Footer
@@ -18,14 +33,8 @@ fetch("FilesReuse/footer.html")
         footer.innerHTML = data;
     });
 
-// Mobile Menu Toggle
-document.addEventListener("click", function (e) {
-    const button = e.target.closest("#mobile-menu-button");
-
-    if (button) {
-        const menu = document.getElementById("mobile-menu");
-        if (!menu) return;
-
-        menu.classList.toggle("hidden");
-    }
-});
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileMenu);
+} else {
+    initMobileMenu();
+}
